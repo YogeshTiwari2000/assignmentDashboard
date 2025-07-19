@@ -1,0 +1,79 @@
+<!-- <div class="text-2xl  p-4"><strong>Semi Contracted Field Master</strong></div>
+<div class="">
+    <mat-stepper [linear]="isLinear" #stepper class="">
+        <mat-step [stepControl]="firstFormGroup" class="">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel class="flex flex-col">Farmer Indian ID Details</ng-template>
+                <div>
+                    <app-farmer-id-form [stepper]="stepper"></app-farmer-id-form>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Farmer Account Details">
+            <form [formGroup]="secondFormGroup">
+                <app-farmer-account-details [formGroup]="secondFormGroup"
+                    [stepper]="stepper"></app-farmer-account-details>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup" label="Next of Aadhar D Details">
+            <form [formGroup]="thirdFormGroup">
+                <app-next-of-kin-form [formGroup]="thirdFormGroup" [stepper]="stepper"></app-next-of-kin-form>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Document/Photo Upload</ng-template>
+            <app-document-upload-form [stepper]="stepper"></app-document-upload-form>
+        </mat-step>
+    </mat-stepper>
+</div> -->
+
+<!-- layout or parent component template -->
+<div class="p-4">
+
+    <div class="text-2xl mb-4">
+        <strong>Semi Contracted Field Master</strong>
+    </div>
+
+    <!-- Vertical scroll wrapper for the entire form on small screens -->
+    <div class="h-[calc(100vh-4rem)]
+           overflow-y-auto 
+           sm:overflow-y-visible sm:h-auto">
+
+        <div class="overflow-x-auto sm:overflow-x-visible">
+            <mat-stepper [linear]="isLinear" #stepper class="min-w-[600px] sm:min-w-0">
+
+                <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+                        <ng-template matStepLabel class="flex flex-col">
+                            Farmer Indian ID Details
+                        </ng-template>
+                        <app-farmer-id-form [stepper]="stepper"></app-farmer-id-form>
+                    </form>
+                </mat-step>
+
+                <mat-step [stepControl]="secondFormGroup" label="Farmer Account Details">
+                    <form [formGroup]="secondFormGroup">
+                        <app-farmer-account-details [formGroup]="secondFormGroup" [stepper]="stepper">
+                        </app-farmer-account-details>
+                    </form>
+                </mat-step>
+
+                <!-- Step 3 -->
+                <mat-step [stepControl]="thirdFormGroup" label="Next of Aadhar D Details">
+                    <form [formGroup]="thirdFormGroup">
+                        <app-next-of-kin-form [formGroup]="thirdFormGroup" [stepper]="stepper">
+                        </app-next-of-kin-form>
+                    </form>
+                </mat-step>
+
+                <!-- Step 4 -->
+                <mat-step>
+                    <ng-template matStepLabel>Document/Photo Upload</ng-template>
+                    <app-document-upload-form [stepper]="stepper"></app-document-upload-form>
+                </mat-step>
+            </mat-stepper>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,110 @@
+<div class="my-10 p-6 bg-white rounded-lg shadow-md">
+    <!-- <h2 class="text-2xl font-bold mb-6 text-center">Farmer Kenyan ID Details</h2> -->
+    <div class="w-auto inline-block">
+        <span class="text-lg font-bold text-[#100D5C] inline-block">Farmer Kenyan ID Details
+            Details</span>
+        <span class="inline-block border-t-2 border-red-600 w-1/2 border-red"></span>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+            <!-- Name -->
+            <div class="md:col-span-2">
+                <label class="block mb-1 font-semibold">Next of Kin Name</label>
+                <input type="text" formControlName="name" class="w-full border  px-4 py-2 focus:outline-none focus:ring"
+                    placeholder="Full name" />
+            </div>
+
+            <!-- Kenyan ID -->
+            <div>
+                <label class="block mb-1 font-semibold">Next of Aadhar ID</label>
+                <input type="text" formControlName="AadharId"
+                    class="w-full border  px-4 py-2 focus:outline-none focus:ring" placeholder="National ID number" />
+            </div>
+            <!-- Serial No. -->
+            <div>
+                <label class="block mb-1 font-semibold">Serial No.</label>
+                <input type="text" formControlName="serialNo"
+                    class="w-full border  px-4 py-2 focus:outline-none focus:ring" placeholder="Serial number" />
+            </div>
+
+            <!-- DOB -->
+            <div>
+                <label class="block mb-1 font-semibold">Date of Birth</label>
+                <input type="date" formControlName="dob"
+                    class="w-full border  px-4 py-2 focus:outline-none focus:ring" />
+            </div>
+
+
+            <!-- Gender -->
+            <div>
+                <label class="block mb-1 font-semibold">Gender</label>
+                <select formControlName="gender" class="w-full border  px-4 py-2 focus:outline-none focus:ring">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <!-- Birth District -->
+            <div>
+                <label class="block mb-1 font-semibold">Birth District</label>
+                <input type="text" formControlName="birthDistrict"
+                    class="w-full border  px-4 py-2 focus:outline-none focus:ring" />
+            </div>
+
+            <!-- Date of Issue -->
+            <div>
+                <label class="block mb-1 font-semibold">Date of Issue</label>
+                <input type="date" formControlName="dateOfIssue"
+                    class="w-full border  px-4 py-2 focus:outline-none focus:ring" />
+            </div>
+            <!-- District -->
+            <div>
+                <label class="block mb-1 font-semibold">District</label>
+                <select formControlName="district" class="w-full border  px-4 py-2 focus:outline-none focus:ring">
+                    <option value="">Select District</option>
+                    <option *ngFor="let dist of districts" [value]="dist">{{ dist }}</option>
+                </select>
+            </div>
+
+            <!-- Division -->
+            <div>
+                <label class="block mb-1 font-semibold">Division</label>
+                <input type="text" formControlName="division"
+                    class="w-full border  px-4 py-2 focus:outline-none focus:ring" placeholder="Division" />
+            </div>
+
+
+
+            <!-- Location -->
+            <div>
+                <label class="block mb-1 font-semibold">Location</label>
+                <select formControlName="location" class="w-full border  px-4 py-2 focus:outline-none focus:ring">
+                    <option value="">Select Location</option>
+                    <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+                </select>
+            </div>
+
+
+
+            <!-- ID Sub Location -->
+            <div>
+                <label class="block mb-1 font-semibold">ID Sub Location</label>
+                <input type="text" formControlName="idSubLocation"
+                    class="w-full border  px-4 py-2 focus:outline-none focus:ring" />
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mt-6 flex justify-end gap-4">
+            <button type="button" (click)="stepper.previous()"
+                class="px-4 py-2 bg-[#17A2B8] text-white hover:bg-blue-700">
+                Previous
+            </button>
+            <button type="submit" class="bg-blue-600 text-white px-6 py-2 hover:bg-blue-700 transition">
+                Next
+            </button>
+        </div>
+    </form>
+</div>

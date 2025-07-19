@@ -1,0 +1,78 @@
+<div [formGroup]="formGroup" class=" bg-white rounded shadow my-10 p-6">
+    <div class="w-auto inline-block">
+        <span class="text-lg font-bold text-[#100D5C] inline-block">Farmer Account Details
+            Details</span>
+        <span class="inline-block border-t-2 border-red-600 w-1/2 border-red"></span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div>
+            <label class="block font-medium">Bank</label>
+            <input type="text" formControlName="bank" class="w-full border  px-4 py-2 focus:outline-none focus:ring" />
+        </div>
+
+        <div>
+            <label class="block font-medium">Branch</label>
+            <input type="text" formControlName="branch"
+                class="w-full border  px-4 py-2 focus:outline-none focus:ring" />
+        </div>
+
+        <div>
+            <label class="block font-medium">Bank Account No</label>
+            <input type="text" formControlName="bankAccount"
+                class="w-full border  px-4 py-2 focus:outline-none focus:ring" />
+        </div>
+
+        <div>
+            <label class="block font-medium">Main/Home Contact No</label>
+            <input type="tel" formControlName="mainContact"
+                class="w-full border  px-4 py-2 focus:outline-none focus:ring" />
+        </div>
+
+        <div>
+            <label class="block font-medium">Mpessa Mobile No.</label>
+            <input type="tel" formControlName="mpessaMobile"
+                class="w-full border  px-4 py-2 focus:outline-none focus:ring" />
+        </div>
+
+        <div>
+            <label class="block font-medium">KRA PIN</label>
+            <input type="text" formControlName="kraPin"
+                class="w-full border  px-4 py-2 focus:outline-none focus:ring" />
+        </div>
+
+        <div class="md:col-span-2">
+            <label class="block font-medium ">Po Box Residence Address</label>
+            <input type="text" formControlName="residenceAddress"
+                class="w-full border  px-4 py-2 focus:outline-none focus:ring" />
+        </div>
+
+        <div class="flex items-center gap-4">
+            <span class="font-medium">Same As Residence Address</span>
+            <mat-slide-toggle formControlName="sameAsResidence" (change)="onToggleSameAddress($event.checked)"
+                color="primary">
+                {{ sameAsResidence ? 'No' : 'Yes' }}
+            </mat-slide-toggle>
+        </div>
+
+        <div class="md:col-span-2">
+            <label class="block font-medium">Permanent Address</label>
+            <input type="text" formControlName="permanentAddress"
+                class="w-full border rounded px-4 py-2 focus:outline-none focus:ring" />
+        </div>
+    </div>
+
+    <div class="mt-6 flex justify-end gap-4 flex justify-between">
+        <button type="button" (click)="stepper.previous()" class="px-4 py-2 bg-[#17A2B8] text-white hover:bg-blue-700">
+            Previous
+        </button>
+        <div>
+            <button type="button" class="px-4 py-2 bg-gray-500 hover:bg-gray-300">
+                Cancel
+            </button>
+            <button type="button" (click)="stepper.next()" class="px-4 py-2 bg-primary hover:bg-gray-300 ml-2">
+                Next
+            </button>
+        </div>
+    </div>
+</div>

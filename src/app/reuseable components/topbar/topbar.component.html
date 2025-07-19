@@ -1,0 +1,70 @@
+<header
+    class="flex flex-col top-0 z-50 sm:flex-row sm:first-letter:items-center justify-between px-6 py-2 bg-white shadow-md">
+
+    <div class="flex items-center space-x-4">
+        <!-- emit up to layout -->
+        <button class="m-1 text-black sm:px-4 py-2 hover:cursor-pointer" (click)="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="relative">
+            <input type="text" placeholder="Search Menu"
+                class="pl-4 pr-10 py-2 border border-gray-300 focus:outline-none focus:ring" />
+            <i
+                class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+        </div>
+    </div>
+
+    <div class="flex items-center space-x-4">
+        <!-- Grid -->
+        <button class="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition">
+            <i class="fa-solid fa-table-cells text-gray-700"></i>
+        </button>
+
+        <!-- Fullscreen -->
+        <button class="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition">
+            <i class="fa-solid fa-expand text-gray-700"></i>
+        </button>
+
+        <!-- Brightness toggle -->
+        <button (click)="toggleDarkMode()" class="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition">
+            <i class="fa-solid fa-lightbulb text-gray-700"></i>
+        </button>
+
+        <!-- Notifications -->
+        <div class="relative">
+            <button (click)="toggleNotifications()" class="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition">
+                <i class="fa-solid fa-bell text-gray-700"></i>
+            </button>
+            <span *ngIf="notificationsCount > 0"
+                class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold text-red-100 bg-green-600 rounded-full">
+                {{ notificationsCount }}
+            </span>
+
+            <div *ngIf="notificationsOpen"
+                class="absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-md shadow-lg z-20">
+                <p class="p-4 text-gray-700">No new notifications</p>
+            </div>
+        </div>
+
+        <!-- Profile dropdown -->
+        <div class="relative">
+            <button (click)="toggleMenu()"
+                class="flex items-start hover:bg-gray-200 px-4 py-2 transition space-x-3 focus:outline-none gap-1">
+                <img class="w-8 h-8 object-cover rounded-full" [src]="userAvatarUrl" alt="User Avatar" />
+                <div class="text-left">
+                    <span class="block font-semibold text-sm text-gray-700">{{ loggedInUserName }}</span>
+                    <p class="text-xs  text-gray-500">{{ userRole }}</p>
+                </div>
+
+            </button>
+
+            <div *ngIf="menuOpen"
+                class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-20">
+                <button (click)="onLogout()" class="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+</header>

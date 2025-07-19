@@ -1,0 +1,75 @@
+<div class="w-full overflow-x-auto">
+  <table class="min-w-full bg-white  rounded-lg overflow-hidden">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">S.No</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Filed Master</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Grower Name</th>
+        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of pagedUsers; let i = index" class="border-b hover:bg-gray-50 transition-colors">
+        <td class="px-6 py-4 text-sm text-gray-900">
+          {{ (currentPage - 1) * pageSize + i + 1 }}
+        </td>
+        <td class="px-6 py-4 text-sm text-gray-900">{{ user.filedMaster }}</td>
+        <td class="px-6 py-4 text-sm text-gray-900">{{ user.growerName }}</td>
+        <td class="px-6 py-4 text-sm text-center space-x-2">
+
+          <button matIconButton [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+
+            <button mat-menu-item (click)="goToProfile(user)">
+              <button class="text-blue-600 hover:text-blue-900">
+                <i class="fa fa-eye"></i>
+              </button>
+              <span class="ml-2">View</span>
+            </button>
+            <!--  -->
+            <button mat-menu-item (click)="edit.emit(user)">
+              <button class="text-yellow-600 hover:text-yellow-900">
+                <i class="fa fa-edit"></i>
+              </button>
+              <span class="ml-2">Edit</span>
+            </button>
+            <!--  -->
+            <button mat-menu-item (click)="delete.emit(user)">
+              <button class="text-red-600 hover:text-red-900">
+                <i class="fa fa-trash"></i>
+              </button>
+              <span class="ml-2">Delete</span>
+            </button>
+          </mat-menu>
+
+
+        </td>
+      </tr>
+
+      <tr *ngIf="filteredUsers.length === 0">
+        <td colspan="4" class="px-6 py-4 text-center text-gray-500">
+          No records found.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="flex items-center justify-between px-4 py-3">
+    <button class="px-3 py-1 text-gray-600 hover:underline disabled:opacity-50" (click)="previousPage()"
+      [disabled]="currentPage === 1">
+      Previous
+    </button>
+
+    <span class="text-gray-700 text-sm">
+      Page {{ currentPage }} of {{ totalPages }}
+    </span>
+
+    <button class="px-3 py-1 text-gray-600 hover:underline disabled:opacity-50" (click)="nextPage()"
+      [disabled]="currentPage === totalPages">
+      Next
+    </button>
+  </div>
+</div>

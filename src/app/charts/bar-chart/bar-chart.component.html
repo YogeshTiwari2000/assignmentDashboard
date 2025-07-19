@@ -1,0 +1,31 @@
+<div class="dashboard flex flex-col sm:flex-row">
+
+    <div class="metrics ">
+        <div class="card card-deposits text-black text-left text-sm font-semibold">
+            <div class="w-8/12">
+                <div class="value text-left">904567K</div>
+                <div class="label text-left">Total Deposits</div>
+            </div>
+        </div>
+        <div class="card card-withdrawals text-black text-left text-sm font-semibold">
+            <div class="w-8/12">
+                <div class="value text-left">604567K</div>
+                <div class="label text-left">Total Withdrawals</div>
+            </div>
+        </div>
+        <div class="card card-new-accounts text-black text-left text-sm font-semibold">
+            <div class="w-8/12">
+                <div class="value text-left">704567K</div>
+                <div class="label text-left">New Accounts Opened</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <div class="flex justify-between items-center mb-2 border-b-2">
+            <div class=" text-sm text-black font-bold pb-2">Transactions Awaiting Approval</div>
+            <div> <mat-icon>more_vert</mat-icon></div>
+        </div>
+        <canvas #barCanvas></canvas>
+    </div>
+</div>

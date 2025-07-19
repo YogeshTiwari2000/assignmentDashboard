@@ -1,0 +1,69 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class=" bg-white rounded shadow my-10 p-6">
+
+    <div class="w-auto inline-block">
+        <span class="text-lg font-bold text-[#100D5C] inline-block">Document/Photo Upload
+            Details</span>
+        <span class="inline-block border-t-2 border-red-600 w-1/2 border-red"></span>
+    </div>
+
+    <div class="p-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+        <label
+            class="border flex items-center justify-center text-center py-8 bg-[#F3F3F3] px-5 bg-gray-400 rounded cursor-pointer">
+            Upload Indian ID Front
+            <input type="file" hidden (change)="onFileChange($event, 'indianIdFront')" />
+        </label>
+
+        <label
+            class="border flex items-center justify-center text-center py-8 bg-[#F3F3F3] px-5 bg-gray-400 rounded cursor-pointer">
+            Upload Indian ID Back
+            <input type="file" hidden (change)="onFileChange($event, 'indianIdBack')" />
+        </label>
+
+        <label
+            class="border flex items-center justify-center text-center py-8 bg-[#F3F3F3] px-5 bg-gray-400 rounded cursor-pointer">
+            Upload Next Aadhar ID Front
+            <input type="file" hidden (change)="onFileChange($event, 'nextAadharFront')" />
+        </label>
+
+        <label
+            class="border flex items-center justify-center text-center py-8 bg-[#F3F3F3] px-5 bg-gray-400 rounded cursor-pointer">
+            Upload Next Kin ID Back
+            <input type="file" hidden (change)="onFileChange($event, 'nextKinBack')" />
+        </label>
+
+        <label
+            class="border flex items-center justify-center text-center py-8 bg-[#F3F3F3] px-5 bg-gray-400 rounded cursor-pointer">
+            Upload Farmer Photo
+            <input type="file" hidden (change)="onFileChange($event, 'farmerPhoto')" />
+        </label>
+
+        <label
+            class="border flex items-center justify-center text-center py-8 bg-[#F3F3F3] px-5 bg-gray-400 rounded cursor-pointer">
+            Upload Bank Passbook / Debit Card
+            <input type="file" hidden (change)="onFileChange($event, 'bankPassbook')" />
+        </label>
+
+        <div class="flex flex-col space-y-2">
+            <label><input type="checkbox" formControlName="blackListed" /> Black KListed</label>
+            <label><input type="checkbox" formControlName="inActive" /> In Active</label>
+            <label><input type="checkbox" formControlName="chequeApplicable" /> Cheque Applicable</label>
+        </div>
+
+        <div>
+            <label>ERP Code</label>
+            <input type="text" formControlName="erpCode" class="border p-2 w-full" />
+        </div>
+
+        <div class="col-span-full flex justify-between mt-4">
+            <button type="button" (click)="stepper.previous()"
+                class="bg-teal-500 text-white px-4 py-2">Previous</button>
+            <div>
+                <button type="button" class="bg-gray-500 text-white px-4 py-2 mr-2">Cancel</button>
+                <button type="button" (click)="stepper.next()" class="bg-blue-600 text-white px-4 py-2">Next</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</form>

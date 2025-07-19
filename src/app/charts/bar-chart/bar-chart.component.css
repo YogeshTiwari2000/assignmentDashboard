@@ -1,0 +1,37 @@
+.dashboard {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+.metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card {
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    min-width: 160px;
+}
+
+.card-deposits {
+    background-color: #CDFFC9;
+}
+
+.card-withdrawals {
+    background-color: #FFDBE0;
+}
+
+.card-new-accounts {
+    background-color: #C2DFFF;
+}
+
+.chart-container {
+    flex: 1;
+    max-width: 600px;
+}

@@ -1,0 +1,37 @@
+<div class="flex flex-col h-full w-full text-white">
+  <div *ngIf="!collapsed; else collapsedSidebar" class="flex items-center justify-center py-3 px-4"
+    (click)="toDashboard()">
+    <img src="../../../assets/default-logo.svg" alt="Your Logo" class="h-16 w-48" />
+  </div>
+  <ng-template #collapsedSidebar>
+    <div class="flex items-center justify-center p-3 " (click)="toDashboard()">
+      <img src="https://preview.keenthemes.com/metronic/react/demo1/media/logos/logo-letter-1.png" alt="Your Logo"
+        class='w-100' />
+    </div>
+  </ng-template>
+
+  <div class="mt-4 flex flex-col" [ngClass]="collapsed ? 'items-center' : ''">
+    <ng-container *ngFor="let link of navLinks">
+      <a [routerLink]="[link.path]" routerLinkActive="bg-blue-600 text-white"
+        [ngClass]="collapsed ? 'p-3 hover:bg-gray-700 flex justify-center' : 'flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700'">
+        <div class="flex items-center" [ngClass]="collapsed ? 'justify-center' : ''">
+          <i class="fa-solid text-xl" [ngClass]="link.icon"></i>
+          <span *ngIf="!collapsed" class="ml-3">{{ link.title }}</span>
+        </div>
+        <i *ngIf="!collapsed && link.path !== '/dashboard'" class="fa-solid fa-chevron-right text-gray-400"></i>
+      </a>
+    </ng-container>
+  </div>
+  <!-- <div class="mt-4 flex flex-col" [ngClass]="collapsed ? 'items-center' : ''">
+    <ng-container *ngFor="let link of navLinks">
+      <a [routerLink]="link.path" routerLinkActive="bg-blue-600 text-white" [routerLinkActiveOptions]="{exact: true}"
+        [ngClass]="collapsed ? 'p-3 hover:bg-gray-700 flex justify-center' : 'flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700'">
+        <div class="flex items-center" [ngClass]="collapsed ? 'justify-center' : ''">
+          <i class="fa-solid text-xl" [ngClass]="link.icon"></i>
+          <span *ngIf="!collapsed" class="ml-3">{{ link.title }}</span>
+        </div>
+        <i *ngIf="!collapsed && link.path !== '/dashboard'" class="fa-solid fa-chevron-right text-gray-400"></i>
+      </a>
+    </ng-container>
+  </div>
+</div> -->

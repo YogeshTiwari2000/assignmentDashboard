@@ -1,0 +1,101 @@
+<div class="flex h-screen bg-gray-50">
+  <div class="hidden lg:block w-1/2 bg-cover bg-center"
+    style="background-image: url('https://media.istockphoto.com/id/476743286/photo/tractor-spraying.jpg?s=612x612&w=0&k=20&c=PiioaxdyU_5O2meP9N-_RIXPK-5MArxbdmmwBAgolyQ=')">
+  </div>
+
+  <!-- Right: form container -->
+  <div class="w-full lg:w-1/2 flex items-center justify-center bg-white">
+    <div class="w-full max-w-md p-8  rounded-lg">
+
+      <!-- Logo above form -->
+      <div class="flex justify-center mb-6">
+        <img src="../../../assets/default-logo.svg" alt="Your Logo" class="h-16 w-1/2" />
+      </div>
+
+      <div class="text-lg font-bold text-start mb-6 ">Login In</div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <!-- Email -->
+        <div (click)="userNameInput.focus()" class="
+            mb-4 p-2 border-2 border-gray-300 rounded-md cursor-text
+            transition-colors duration-150 focus-within:border-blue-500
+          ">
+          <div class="text-sm font-medium text-gray-600">User ID</div>
+          <div class="flex items-center mt-1">
+            <i class="fa fa-envelope text-gray-400"></i>
+            <input #userNameInput type="email" formControlName="userName" placeholder=""
+              class="flex-1 ml-3 p-1 w-full bg-transparent outline-none" />
+          </div>
+          <p *ngIf="userName.invalid && userName.touched" class="text-red-500 text-sm mt-1">
+            Please enter a valid email.
+          </p>
+        </div>
+
+        <!-- Password (clickable wrapper) -->
+        <div (click)="passwordInput.focus()" class="
+            mb-4 p-2 border-2 border-gray-300 rounded-md cursor-text
+            transition-colors duration-150 focus-within:border-blue-500
+          ">
+          <div class="text-sm font-medium text-gray-600">Password</div>
+          <div class="flex items-center mt-1 relative">
+            <i class="fa fa-lock text-gray-400"></i>
+            <input #passwordInput [type]="showPassword() ? 'text' : 'password'" formControlName="password"
+              placeholder="" class="flex-1 ml-3 p-1 w-full bg-transparent outline-none" />
+            <button type="button" (click)="togglePasswordVisibility()"
+              class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500">
+              <i [class]="showPassword() ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+            </button>
+          </div>
+          <p *ngIf="password.invalid && password.touched" class="text-red-500 text-sm mt-1">
+            Minimum 6 characters.
+          </p>
+        </div>
+
+        <!-- Remember + Forgot -->
+        <div class="flex items-center justify-between mb-4 text-sm">
+          <label class="inline-flex items-center">
+            <input type="checkbox" formControlName="rememberMe" class="h-4 w-4 text-blue-600 border-gray-300 rounded" />
+            <span class="ml-2 text-gray-700">Remember me</span>
+          </label>
+          <a routerLink="/forgot-password" class="text-blue-600 hover:underline">
+            Forgot password?
+          </a>
+        </div>
+
+        <!-- CAPTCHA -->
+        <div class="mb-6">
+          <div class="flex items-center mb-2">
+            <img
+              src="https://images.fastcompany.com/image/upload/f_webp,c_fit,w_1920,q_auto/fc/captcha-internet-translate.jpg"
+              alt="CAPTCHA" class="h-12 border rounded" />
+            <button type="button" (click)="reloadCaptcha()" class="ml-3 text-gray-600 hover:text-gray-800">
+              <i class="fa fa-sync"></i>
+            </button>
+          </div>
+          <input type="text" formControlName="captcha" placeholder="Enter the code above / optional"
+            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
+            [class.border-red-500]="captcha.invalid && captcha.touched" />
+          <p *ngIf="captcha.invalid && captcha.touched" class="text-red-500 text-sm mt-1">
+            CAPTCHA is required.
+          </p>
+        </div>
+
+        <!-- Error banner -->
+        <div *ngIf="loginError()" class="mb-4 px-4 py-2 bg-red-100 text-red-700 rounded">
+          {{ loginError() }}
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="w-full py-2 bg-[#FF000A] text-white rounded" [disabled]="isLoading()">
+          <ng-container *ngIf="isLoading(); else loginText">
+            Loading…
+          </ng-container>
+          <ng-template #loginText>Login</ng-template>
+        </button>
+      </form>
+
+
+    </div>
+  </div>
+</div>

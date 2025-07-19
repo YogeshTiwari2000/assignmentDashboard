@@ -1,0 +1,36 @@
+<div class="flex justify-between items-center p-4  ">
+    <span class="text-2xl font-bold m-0"> Semi Contracted Field Master</span>
+    <button (click)="onAdd()" class="flex items-center bg-[#009fdc] hover:bg-blue-500 text-white
+             px-4 py-2 rounded-lg transition rounded-3xl ">
+        <i class="fa fa-plus mr-2"></i>
+        Add
+    </button>
+</div>
+
+<div class="p-4 bg-white shadow rounded-lg mx-4 relative mb-3">
+    <div class="relative flex justify-between">
+        <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn btn-outline-secondary rounded-3xl" id="dropdownBasic1" ngbDropdownToggle>
+                Show Data
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem>First - 1</button>
+                <button ngbDropdownItem>Second Action</button>
+                <button ngbDropdownItem>Third</button>
+            </div>
+        </div>
+
+        <div class="flex justify-end space-x-4 mb-4">
+            <div class="relative">
+                <input type="text" placeholder="Search" [(ngModel)]="searchTerm"
+                    class=" w-36 pl-4 btn-outline-secondary pr-10 py-2 border border-gray-300 rounded-3xl" />
+                <!-- <i
+                    class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i> -->
+            </div>
+        </div>
+    </div>
+
+
+    <app-user-table class="mt-4" [users]="users()" [searchTerm]="searchTerm()" (edit)="onEdit($event)"
+        (delete)="onDelete($event)"></app-user-table>
+</div>
