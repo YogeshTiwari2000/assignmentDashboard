@@ -1,4 +1,4 @@
-<div class="flex lg:hidden">
+<!-- <div class="flex lg:hidden">
   <div *ngIf="isMenuOpen" [ngClass]="isAnimatingIn ? 'animate-slide-in' : 'animate-slide-out'"
     class="relative z-50 top-0 left-0 w-16 h-auto bg-[#003C67] text-white shadow-xl">
     <app-navbar [collapsed]="true"></app-navbar>
@@ -9,13 +9,41 @@
   </div>
 </div>
 
-<!-- Desktop layout -->
+Desktop layout
 <div class="hidden lg:flex">
   <div class="relative h-auto bg-[#003C67] text-white" [ngClass]="isCollapsedDesktop ? 'w-16' : 'w-[20%]'">
     <app-navbar [collapsed]="isCollapsedDesktop"></app-navbar>
   </div>
 
   <div class="flex-wrap w-100 max-w-100 bg-[#F6F6F6] min-h-screen">
+    <app-topbar (menuToggle)="toggleDesktopSidebar()"></app-topbar>
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
+
+<div class="flex xl:hidden">
+  <!-- Mobile Sidebar (overlay) -->
+  <div *ngIf="isMenuOpen" [ngClass]="isAnimatingIn ? 'animate-slide-in' : 'animate-slide-out'"
+    class="fixed z-50 top-0 left-0 w-16 h-full bg-[#003C67] text-white shadow-xl">
+    <app-navbar [collapsed]="true"></app-navbar>
+  </div>
+
+  <!-- Mobile Content -->
+  <div class="w-full bg-[#F6F6F6] min-h-screen" [ngClass]="{'ml-16': isMenuOpen}">
+    <app-topbar (menuToggle)="toggleSidebar()"></app-topbar>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- Desktop layout -->
+<div class="hidden xl:flex">
+  <!-- Fixed Desktop Sidebar -->
+  <div class="fixed h-full bg-[#003C67] text-white z-40" [ngClass]="isCollapsedDesktop ? 'w-16' : 'w-[20%]'">
+    <app-navbar [collapsed]="isCollapsedDesktop"></app-navbar>
+  </div>
+
+  <!-- Desktop Content with sidebar offset -->
+  <div class="flex-1 bg-[#F6F6F6] min-h-screen" [ngClass]="isCollapsedDesktop ? 'ml-16' : 'ml-[20%]'">
     <app-topbar (menuToggle)="toggleDesktopSidebar()"></app-topbar>
     <router-outlet></router-outlet>
   </div>
